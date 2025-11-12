@@ -6,38 +6,153 @@
         xmlns:local="clr-namespace:PhanHuyBinhWPF.Views"
         WindowStartupLocation="CenterScreen"
         mc:Ignorable="d"
-        Title="LoginWindow" Height="450" Width="800">
+        Title="Đăng nhập hệ thống" Height="450" Width="800"
+        WindowStyle="SingleBorderWindow" ResizeMode="CanMinimize">
+
+    <Window.Resources>
+        <Style x:Key="PrimaryButton" TargetType="Button">
+            <Setter Property="Background" Value="#0078D4"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Padding" Value="10,8"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" CornerRadius="4">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#005A9E"/>
+                </Trigger>
+                <Trigger Property="IsPressed" Value="True">
+                    <Setter Property="Background" Value="#003A6A"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style x:Key="ModernTextBox" TargetType="TextBox">
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Padding" Value="10,8"/>
+            <Setter Property="Margin" Value="0,5,0,15"/>
+            <Setter Property="BorderBrush" Value="#ABADB3"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="TextBox">
+                        <Border x:Name="border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" CornerRadius="4" SnapsToDevicePixels="True">
+                            <ScrollViewer x:Name="PART_ContentHost" Focusable="false" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsKeyboardFocused" Value="true">
+                                <Setter TargetName="border" Property="BorderBrush" Value="#0078D4"/>
+                                <Setter TargetName="border" Property="BorderThickness" Value="2"/>
+                                <Setter Property="Padding" Value="9,7"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="ModernPasswordBox" TargetType="PasswordBox">
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Padding" Value="10,8"/>
+            <Setter Property="Margin" Value="0,5,0,20"/>
+            <Setter Property="BorderBrush" Value="#ABADB3"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="PasswordBox">
+                        <Border x:Name="border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" CornerRadius="4" SnapsToDevicePixels="True">
+                            <ScrollViewer x:Name="PART_ContentHost" Focusable="false" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsKeyboardFocused" Value="true">
+                                <Setter TargetName="border" Property="BorderBrush" Value="#0078D4"/>
+                                <Setter TargetName="border" Property="BorderThickness" Value="2"/>
+                                <Setter Property="Padding" Value="9,7"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="LabelTextBlock" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="Foreground" Value="#333333"/>
+            <Setter Property="Margin" Value="0,0,0,0"/>
+        </Style>
+
+        <Style x:Key="TitleTextBlock" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="28"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Foreground" Value="#111111"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="Margin" Value="0,0,0,25"/>
+        </Style>
+    </Window.Resources>
+
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="56*"/>
-            <ColumnDefinition Width="87*"/>
-            <ColumnDefinition Width="57*"/>
+            <ColumnDefinition Width="0.8*"/>
+            <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="62*"/>
-            <RowDefinition Height="303*"/>
-            <RowDefinition Height="69*"/>
-        </Grid.RowDefinitions>
 
-        <StackPanel Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" Width="200" Height="187">
+        <Border Grid.Column="0">
+            <Border.Background>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                    <GradientStop Color="#0078D4" Offset="0.0" />
+                    <GradientStop Color="#004A81" Offset="1.0" />
+                </LinearGradientBrush>
+            </Border.Background>
+            <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+                <TextBlock Text="Chào mừng!"
+                           Foreground="White"
+                           FontSize="32"
+                           FontWeight="Bold"/>
+                <TextBlock Text="Vui lòng đăng nhập để tiếp tục"
+                           Foreground="White"
+                           FontSize="16"
+                           HorizontalAlignment="Center"
+                           Opacity="0.8"/>
+            </StackPanel>
+        </Border>
 
+        <Border Grid.Column="1" Background="White">
+            <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" 
+                        Width="300">
 
-            <TextBlock Text="Email:" Margin="0,0,0,5"/>
+                <TextBlock Text="Đăng nhập" Style="{StaticResource TitleTextBlock}"/>
 
-            <TextBox Height="30" Margin="0,0,0,10" 
-                     Text="{Binding Email, UpdateSourceTrigger=PropertyChanged}" />
+                <TextBlock Text="Email:" Style="{StaticResource LabelTextBlock}"/>
 
-            <TextBlock Text="Password:" Margin="0,0,0,5"/>
+                <TextBox Style="{StaticResource ModernTextBox}"
+                         Text="{Binding Email, UpdateSourceTrigger=PropertyChanged}" />
 
-            <PasswordBox x:Name="Password" Height="30" Margin="0,0,0,20" />
+                <TextBlock Text="Mật khẩu:" Style="{StaticResource LabelTextBlock}"/>
 
-            <Button Content="Login" Height="30"
-                    Command="{Binding LoginCommand}" 
-                    CommandParameter="{Binding ElementName=Password}"
-                    IsDefault="True"/>
+                <PasswordBox x:Name="Password" Style="{StaticResource ModernPasswordBox}" />
 
-            <TextBlock Text="{Binding ErrorMessage}" Foreground="Red" Margin="0,10,0,0" TextWrapping="Wrap"/>
+                <Button Content="Login" 
+                        Height="40"
+                        Style="{StaticResource PrimaryButton}"
+                        Command="{Binding LoginCommand}" 
+                        CommandParameter="{Binding ElementName=Password}"
+                        IsDefault="True"/>
 
-        </StackPanel>
+                <TextBlock Text="{Binding ErrorMessage}" Foreground="Red" 
+                           Margin="0,15,0,0" TextWrapping="Wrap"
+                           HorizontalAlignment="Center"/>
+
+            </StackPanel>
+        </Border>
     </Grid>
 </Window>
