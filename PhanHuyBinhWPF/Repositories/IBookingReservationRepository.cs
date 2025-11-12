@@ -1,0 +1,21 @@
+﻿using PhanHuyBinhWPF.Models;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace PhanHuyBinhWPF.Repositories
+{
+    public interface IBookingReservationRepository
+    {
+        List<BookingReservation> GetByCustomerId(int customerId);
+        void Add(BookingReservation reservation);
+        IEnumerable<BookingReservation> GetAllBookings();
+        IEnumerable<BookingReservation> GetBookingsByDateRange(DateTime start, DateTime end);
+        void DeleteBooking(int bookingReservationId);
+        IEnumerable<BookingReservation> GetBookingsByCustomerName(string bookingSearchText);
+        BookingReservation GetById(int value);
+        void Update(BookingReservation originalBooking);
+    }
+}
